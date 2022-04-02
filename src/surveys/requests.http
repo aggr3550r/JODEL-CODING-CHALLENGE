@@ -1,0 +1,24 @@
+### Creates a new survey
+POST http://localhost:8000/surveys
+content-type: application/json
+
+{
+    "question": "What is your favourite colour?",
+    "options": [
+        {
+            "id": 1,
+            "option": "Red"
+        },
+
+        {
+            "id": 2,
+            "option": "Blue"
+        }
+    ]
+}
+
+
+### Gets all surveys
+GET http://localhost:8000/surveys
+
+

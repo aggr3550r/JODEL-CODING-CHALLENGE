@@ -1,0 +1,26 @@
+### Create a new user
+POST http://localhost:8000/auth/signup
+content-type: application/json
+
+{
+    "email": "hector@kippa.africa",
+    "username": "Hector Uche",
+    "password": "Victor"
+}
+
+### Signin an existing user
+
+POST http://localhost:8000/auth/signin
+content-type: application/json
+
+{
+    "email": "victor@kippa.africa",
+    "password": "Victor"
+}
+
+### Signout the currently signed in user
+POST http://localhost:8000/auth/signout
+
+
+### Get the currently signed in user
+GET http://localhost:8000/auth/whoami
