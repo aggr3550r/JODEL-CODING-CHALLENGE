@@ -1,5 +1,5 @@
-import { Controller, Post, Body, Get, Param, Query } from '@nestjs/common';
-import { User } from 'src/users/schemas/user.schema'; 
+import { Controller, Post, Body, Get, Param, Query, UseGuards } from '@nestjs/common';
+import { User } from 'src/users/schemas/user.schema';
 import { SurveyService } from './survey.service';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { CreateSurveyDTO } from './dtos/create-survey.dto';
@@ -7,9 +7,11 @@ import { SurveyDTO } from './dtos/survey.dto';
 import { CurrentUser } from 'src/users/decorators/current-user.decorator';
 import mongoose from 'mongoose';
 import { GetSurveyDTO } from './dtos/get-survey.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
 const ObjectId = require('mongodb').ObjectID;
 
 @Controller('surveys')
+@UseGuards(AuthGuard)
 export class SurveyController {
     constructor(private surveyService: SurveyService) {}
 

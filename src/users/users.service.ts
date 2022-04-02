@@ -2,10 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import * as mongoose from 'mongoose';
 import { Model } from 'mongoose';
 import { UserDocument } from './schemas/user.schema';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './schemas/user.schema';
-import { UpdateUserDTO } from './dtos/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()

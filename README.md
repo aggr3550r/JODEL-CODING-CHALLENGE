@@ -1,73 +1,55 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+## Content
+#### - Getting Started
+#### - Setting Up The Environment
+#### - Running The Application
+#### - Running tests
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Getting Started 
 
-## Description
+    This app was built as part of the requirements of the software interview process at ***Jodel Venture GmbH***.
+    It functions as a basic API that allows users to create a survey, take a survey and retrieve the results of a survey. It was built with a framework
+    of NodeJS which is NestJS and the method of persistence used is a local MongoDB database.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+    Following below are some instructions on how to set up the app so that you could run it locally on your machine.
 
-## Installation
+### Setting Up The Environment
+   - After you must have cloned this repo into your local machine, create a **.env** file and add an environment variable to it.
+    The only variable you need to add in there to run the application as is is your **MONGO_URI**. An example of what the content of your .env file should look like
+    is illustrated below:
+     ```
+     MONGO_URI='mongodb://localhost:27017/jodel-task'
+     ```
+   - Afterwards, navigate to the project's root path and run a simple **npm install** in your terminal to install all the packages and dependencies as curated in the **package.json** file 
+##### Software requirements
+    Things you should have installed on your computer for this program to run as expected:
+    * Node.js >= V14.0.0
+    * MongoDB >= V5.0
 
-```bash
-$ npm install
-```
 
-## Running the app
+### Running the Application
 
-```bash
-# development
-$ npm run start
+    Having done all the installation and setup above, it's time to run the application and start up the server
+    To run the app, use the command below:
+    ```
+    npm run start:dev
+    ```
+    The above command bootstaps the application into development mode. Now you can play around with the software
+    Within the project, I have integrated a REST Web API Client to make manual testing easier for everyone, you simply
+    have to install the VSCode REST API Client Extension from the marketplace.
 
-# watch mode
-$ npm run start:dev
+    The endpoints that test the APIs endpoints are stored in files named _request.http_. These files are found within the folder 
+    of the resources they are responsible for testing
 
-# production mode
-$ npm run start:prod
-```
 
-## Test
+    In the event that you are not familiar with this method of testing endpoints, I have also included a link below to the Postman docs where
+    you will find a workspace with endpoints already setup and ready for testing 
 
-```bash
-# unit tests
-$ npm run test
+    Link to Postman Workspace: [JODEL API](https://www.postman.com/kippa-api-doc/workspace/jodel)
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
-
-Nest is [MIT licensed](LICENSE).

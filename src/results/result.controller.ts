@@ -1,10 +1,12 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { ResultService } from "./result.service";
 import { CreateResponseDTO } from "./dtos/create-result.dto";
-import { Serialize } from "src/interceptors/serialize.interceptor";
+import { Serialize } from "../interceptors/serialize.interceptor";
 import { ResultDTO } from "./dtos/result.dto";
+import { AuthGuard } from "src/guards/auth.guard";
 
 @Controller('results')
+@UseGuards(AuthGuard)
 export class ResultController {
     constructor(private resultService: ResultService) {}
 
