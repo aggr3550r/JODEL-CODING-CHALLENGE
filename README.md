@@ -28,17 +28,17 @@
 
 
 ### Running the Application
-
-    Having done all the installation and setup above, it's time to run the application and start up the server
-    To run the app, use the command below:
+   - Having done all the installation and setup above, it's time to run the application and start up the server
+     To run the app, use the command below:
     ```
     npm run start:dev
     ```
-    The above command bootstaps the application into development mode. Now you can play around with the software
+    
+  - The above command bootstaps the application into development mode. Now you can play around with the software
     Within the project, I have integrated a REST Web API Client to make manual testing easier for everyone, you simply
     have to install the VSCode REST API Client Extension from the marketplace.
 
-    The endpoints that test the APIs endpoints are stored in files named _request.http_. These files are found within the folder 
+  - The endpoints that test the APIs endpoints are stored in files named _request.http_. These files are found within the folder 
     of the resources they are responsible for testing
 
 
