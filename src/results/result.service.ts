@@ -1,10 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Result } from './schemas/result.schema';
 import { ResultDocument } from './schemas/result.schema';
 import { Survey, SurveyDocument } from '../surveys/schemas/survey.schema';
 import { ShowResultDTO } from './dtos/show-result.dto';
+import { CreateResultDTO } from './dtos/create-result.dto';
 
 
 @Injectable()
@@ -36,7 +37,7 @@ export class ResultService {
   /* Main routine:
     Collects user response and submits it to the result collection
     */
-  async takeSurvey(survey_id: string, answer_id: number) {
+  async takeSurvey(survey_id: string, answer_id: number): Promise<CreateResultDTO> {
     const answer = await this.ResultModel.find({}).select('survey_id');
 
     /*Create an array of all the survey_ids in the document*/
@@ -78,7 +79,15 @@ export class ResultService {
         /*
         Find a question in the surveys collection that matches the survey_id passed as an argument
         */
-        const requested_result = results.find(x => x.survey_id === survey_id);
+        const requested_result = results.find(x => x.survey_id === survey_id );
+
+        
+        /* If the survey_id given by the user does not match any question in the surveys collection,
+        simply throw an exception and notify the user that the survey_id they passed is invalid
+        */
+        if(requested_result === undefined) {
+         throw new NotFoundException(`No existing question has an id of ${survey_id}`);
+       }
 
         /*
         Create an array of the question object in the results collection that matches the survey_id passed
