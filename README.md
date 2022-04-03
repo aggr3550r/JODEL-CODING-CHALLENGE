@@ -53,11 +53,9 @@
 ### Running the tests
 
     - To run the test suite of tests I have written in the application, use the command below in the terminal while in the root of the application:
-
     ```
     jest
     ```
-    
     - It's that simple. 
     **NOTE:** I have written just unit tests and also tested only for the features specified in the 
     coding challenge document. All other auxilliary features you may find in the application were written 
