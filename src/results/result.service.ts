@@ -85,8 +85,8 @@ export class ResultService {
         /* If the survey_id given by the user does not match any question in the surveys collection,
         simply throw an exception and notify the user that the survey_id they passed is invalid
         */
-        if(requested_result === undefined) {
-         throw new NotFoundException(`No existing question has an id of ${survey_id}`);
+        if(!requested_result) {
+         throw new NotFoundException(`No existing question has an id of ${survey_id} !`);
        }
 
         /*
