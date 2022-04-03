@@ -31,10 +31,12 @@
 ### Running the Application
    - Having done all the installation and setup above, it's time to run the application and start up the server
      To run the app, use the following command:
+
     ```
     npm run start:dev
+
     ```
-    The above command bootstaps the application into development mode. Now you can play around with the software
+   - The above command bootstaps the application into development mode. Now you can play around with the software
     
   - The above command bootstaps the application into development mode. Now you can play around with the software
     Within the project, I have integrated a REST Web API Client to make manual testing easier for everyone, you simply
@@ -52,11 +54,12 @@
 
 ### Running the tests
 
-    - To run the test suite of tests I have written in the application, use the command below in the terminal while in the root of the application:
+   - To run the test suite of tests I have written in the application, use the command below in the terminal while in the root of the application:
+
     ```
     jest
     ```
-    - It's that simple. 
+   - It's that simple. 
     **NOTE:** I have written just unit tests and also tested only for the features specified in the 
     coding challenge document. All other auxilliary features you may find in the application were written 
     to smoothen out my development process and as such do not require automated testing.
