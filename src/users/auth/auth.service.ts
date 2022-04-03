@@ -36,7 +36,7 @@ export class AuthService {
 
     }
 
-    async signin(email: string, password: string){
+    async signin(email: string, password: string, username: string){
         const [user] = await this.usersService.find(email);
 
         if (!user) {
@@ -44,6 +44,8 @@ export class AuthService {
         }
 
         const [salt, storedHash] = user.password.split('.');
+
+        username = user.username;
 
         const hash = (await scrypt(password, salt, 32))as Buffer;
                 

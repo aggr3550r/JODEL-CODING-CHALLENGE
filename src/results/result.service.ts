@@ -1,10 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import * as mongoose from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Result } from './schemas/result.schema';
 import { ResultDocument } from './schemas/result.schema';
 import { Survey, SurveyDocument } from '../surveys/schemas/survey.schema';
+import { ShowResultDTO } from './dtos/show-result.dto';
 
 
 @Injectable()
@@ -34,7 +34,7 @@ export class ResultService {
   }
 
   /* Main routine:
-    Collect survey and submit it to the result collection
+    Collects user response and submits it to the result collection
     */
   async takeSurvey(survey_id: string, answer_id: number) {
     const answer = await this.ResultModel.find({}).select('survey_id');
@@ -69,7 +69,7 @@ export class ResultService {
   /* Main routine:
    Gets the results of a survey witha paid id
     */
-   async getResultsOfASurvey(survey_id: string) {
+   async getResultsOfASurvey(survey_id: string): Promise<ShowResultDTO> {
         const surveys = await this.SurveyModel.find().select({
             __v: 0
         });
@@ -81,19 +81,34 @@ export class ResultService {
         const requested_result = results.find(x => x.survey_id === survey_id);
 
         /*
-        Create an 
+        Create an array of the question object in the results collection that matches the survey_id passed
         */
         const question_array = [surveys.find(x => x.id === requested_result.survey_id)];
 
         const { question } = question_array[0];
 
-        const answer_ids = requested_result.answer_ids;
+        //array containing all the valid ids in the options array
+        const valid_ids = [];
+        question_array[0].options.forEach((obj) => {
+            valid_ids.push(obj.id);
+        })
 
-        const answers_so_far = []
+        //array containing all the responses pertaining to a particular question
+        let answer_ids = requested_result.answer_ids;
+
+        //sanitize the answer_ids based on the valid_ids
+        answer_ids.forEach((id) => {
+          if(!(valid_ids.includes(id))){
+            answer_ids = answer_ids.filter(x => x !== id)
+          }
+        })
+
+        //array containing answers that users have provided
+        const answers_so_far = [];
         answer_ids.forEach((answer_id) => {
             answers_so_far.push(question_array[0].options.find(x => x.id === answer_id).option)
-        });
+        })
 
-       return {question, answers_so_far};
+      return {question, answers_so_far};
 }
 }

@@ -1,5 +1,6 @@
 import { Expose } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
+import { Options } from "../types/options.type";
 
 
 export class CreateSurveyDTO {
@@ -9,5 +10,5 @@ export class CreateSurveyDTO {
 
     @Expose()
     @IsNotEmpty()
-    options: [];
+    options: Options[];
 }

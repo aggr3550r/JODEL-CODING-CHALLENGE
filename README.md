@@ -14,6 +14,7 @@
     Following below are some instructions on how to set up the app so that you could run it locally on your machine.
 
 ### Setting Up The Environment
+
    - After you must have cloned this repo into your local machine, create a **.env** file and add an environment variable to it.
     The only variable you need to add in there to run the application as is is your **MONGO_URI**. An example of what the content of your .env file should look like
     is illustrated below:
@@ -34,7 +35,7 @@
     ```
     npm run start:dev
     ```
-    The above command bootstaps the application into development mode. Now you can play around with the software
+    The above command bootstaps the application into development mode. Now you can play around with the software.
     Within the project, I have integrated a REST Web API Client to make manual testing easier for everyone, you simply
     have to install the VSCode REST API Client Extension from the marketplace.
 
@@ -48,7 +49,17 @@
     Link to Postman Workspace: [JODEL API](https://www.postman.com/kippa-api-doc/workspace/jodel)
 
 
+### Running the tests
 
+    To run the test suite of tests I have written in the application, use the command below in the terminal while in the root of the application:
+
+    ```
+    jest
+    ```
+    It's that simple. 
+    **NOTE:** I have written just unit tests and also tested only for the features specified in the 
+    coding challenge document. All other auxilliary features you may find in the application were written 
+    to smoothen out my development process and as such do not require automated testing.
 
 
 

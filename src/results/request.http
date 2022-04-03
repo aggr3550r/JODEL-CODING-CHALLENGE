@@ -1,11 +1,11 @@
-## Creates a new response/answer in the results collection
+## Allows a user to take survey
 POST http://localhost:8000/results
 content-type: application/json
  
 {
     "survey_id": "6245f88cd8148670691f8e5b",
-    "answer_id": 1
+    "answer_id": 2
 }
 
-### Get all survey results
+### Get results of a survey
 GET http://localhost:8000/results/6245f88cd8148670691f8e5b

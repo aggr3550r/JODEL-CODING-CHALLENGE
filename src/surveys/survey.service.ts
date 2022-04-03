@@ -9,7 +9,7 @@ import { SurveyDocument } from './schemas/survey.schema';
 export class SurveyService {
     constructor(@InjectModel(Survey.name) private SurveyModel: Model<SurveyDocument>) {}
 
-    async create(question: string, options: []) {
+    async createSurvey(question: string, options: {}[]) {
         const survey =  await this.SurveyModel.create({question, options});
         return survey.save();
     }

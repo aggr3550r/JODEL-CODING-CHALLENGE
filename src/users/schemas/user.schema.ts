@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 export type UserDocument = User & Document;
 
 @Schema()
-export class User extends Document {
+export class User {
     @Prop()
     username: string;
 

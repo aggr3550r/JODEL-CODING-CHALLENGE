@@ -1,7 +1,7 @@
 import {IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 
-export class CreateResponseDTO {
+export class CreateResultDTO {
     @IsNotEmpty()
     @IsString()
     survey_id: string;

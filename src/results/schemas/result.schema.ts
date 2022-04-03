@@ -6,7 +6,7 @@ import { Document } from 'mongoose';
 export type ResultDocument = Result & Document;
 
 @Schema()
-export class Result extends Document {
+export class Result {
     @Prop()
     survey_id: string;
 

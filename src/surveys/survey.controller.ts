@@ -1,13 +1,11 @@
 import { Controller, Post, Body, Get, Param, Query, UseGuards } from '@nestjs/common';
-import { User } from 'src/users/schemas/user.schema';
 import { SurveyService } from './survey.service';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { Serialize } from '../interceptors/serialize.interceptor';
 import { CreateSurveyDTO } from './dtos/create-survey.dto';
 import { SurveyDTO } from './dtos/survey.dto';
-import { CurrentUser } from 'src/users/decorators/current-user.decorator';
 import mongoose from 'mongoose';
 import { GetSurveyDTO } from './dtos/get-survey.dto';
-import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthGuard } from '../guards/auth.guard';
 const ObjectId = require('mongodb').ObjectID;
 
 @Controller('surveys')
@@ -20,7 +18,7 @@ export class SurveyController {
     @Serialize(SurveyDTO)
     // Create a survey that consists of a question and multiple answers
     createSurvey(@Body() body: CreateSurveyDTO) {
-       return this.surveyService.create(body.question, body.options);
+       return this.surveyService.createSurvey(body.question, body.options);
     }
 
     @Get()
@@ -30,6 +28,7 @@ export class SurveyController {
      }
 
     @Get('/:id')
+    @Serialize(GetSurveyDTO)
     getASurvey(@Param('id') id: mongoose.Types.ObjectId) {
         const survey = this.surveyService.findOne(ObjectId(id));
         return survey;

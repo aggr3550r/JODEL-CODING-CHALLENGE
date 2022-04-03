@@ -1,9 +1,9 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { ResultService } from "./result.service";
-import { CreateResponseDTO } from "./dtos/create-result.dto";
 import { Serialize } from "../interceptors/serialize.interceptor";
+import { AuthGuard } from "../guards/auth.guard";
+import { CreateResultDTO } from "./dtos/create-result.dto";
 import { ResultDTO } from "./dtos/result.dto";
-import { AuthGuard } from "src/guards/auth.guard";
 
 @Controller('results')
 @UseGuards(AuthGuard)
@@ -12,7 +12,7 @@ export class ResultController {
 
     @Post()
     @Serialize(ResultDTO)
-    takeSurvey(@Body() body: CreateResponseDTO) {
+    takeSurvey(@Body() body: CreateResultDTO) {
         return this.resultService.takeSurvey(body.survey_id, body.answer_id);
     }
 
@@ -21,11 +21,4 @@ export class ResultController {
         return this.resultService.getResultsOfASurvey(id);
     }
 
-
-
-
-    // @Get('/idMapper')
-    // idMapper() {
-    //     return this.resultService.idMapper("6245f88cd8148670691f8e5b", 1);
-    // }
 }

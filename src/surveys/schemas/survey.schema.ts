@@ -5,12 +5,12 @@ import { Options } from '../types/options.type'
 export type SurveyDocument = Survey & Document;
 
 @Schema()
-export class Survey extends Document{
+export class Survey {
     @Prop()
     question: string;
 
     @Prop()
-    options: [Options];
+    options:Options[];
 }
 
 export const SurveySchema = SchemaFactory.createForClass(Survey)

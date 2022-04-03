@@ -19,6 +19,8 @@ content-type: application/json
 
 
 ### Gets all surveys
-GET http://localhost:8000/surveys
+GET http://localhost:8000/surveys/
+
+6245f88cd8148670691f8e5b
 
 
