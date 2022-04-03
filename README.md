@@ -34,12 +34,9 @@
     ```
     npm run start:dev
     ```
-<<<<<<< HEAD
-    The above command bootstaps the application into development mode. Now you can play around with the software.
-=======
+    The above command bootstaps the application into development mode. Now you can play around with the software
     
   - The above command bootstaps the application into development mode. Now you can play around with the software
->>>>>>> a2f90268683bd38e36da5cf78692611f15a798fe
     Within the project, I have integrated a REST Web API Client to make manual testing easier for everyone, you simply
     have to install the VSCode REST API Client Extension from the marketplace.
 
@@ -55,12 +52,13 @@
 
 ### Running the tests
 
-    To run the test suite of tests I have written in the application, use the command below in the terminal while in the root of the application:
+    - To run the test suite of tests I have written in the application, use the command below in the terminal while in the root of the application:
 
     ```
     jest
     ```
-    It's that simple. 
+    
+    - It's that simple. 
     **NOTE:** I have written just unit tests and also tested only for the features specified in the 
     coding challenge document. All other auxilliary features you may find in the application were written 
     to smoothen out my development process and as such do not require automated testing.
