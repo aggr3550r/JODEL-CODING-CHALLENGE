@@ -68,7 +68,7 @@ export class ResultService {
   }
 
   /* Main routine:
-   Gets the results of a survey witha paid id
+   Gets the results of a survey with a passed id
     */
    async getResultsOfASurvey(survey_id: string): Promise<ShowResultDTO> {
         const surveys = await this.SurveyModel.find().select({

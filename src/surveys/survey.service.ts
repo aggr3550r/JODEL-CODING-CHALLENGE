@@ -4,12 +4,13 @@ import * as mongoose from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Survey } from './schemas/survey.schema';
 import { SurveyDocument } from './schemas/survey.schema';
+import { CreateSurveyDTO } from './dtos/create-survey.dto';
 
 @Injectable()
 export class SurveyService {
     constructor(@InjectModel(Survey.name) private SurveyModel: Model<SurveyDocument>) {}
 
-    async createSurvey(question: string, options: {}[]) {
+    async createSurvey(question: string, options: {}[]): Promise<CreateSurveyDTO> {
         const survey =  await this.SurveyModel.create({question, options});
         return survey.save();
     }
