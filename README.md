@@ -29,7 +29,7 @@
 
 
 ### Running the Application
-   - Having done all the installation and setup above, it's time to run the application and start up the server
+   - Having done all the installation and setup above, it's time to run the application and start up the server.
      To run the app, use the following command:
 
     ```
