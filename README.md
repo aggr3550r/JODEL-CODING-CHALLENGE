@@ -21,7 +21,7 @@
      ```
      MONGO_URI='mongodb://localhost:27017/jodel-task'
      ```
-   - Afterwards, navigate to the project's root path and run a simple **npm install** in your terminal to install all the packages and dependencies as curated in the **package.json** file 
+   - Afterwards, navigate to the project's root path and run a simple ***npm install*** in your terminal to install all the packages and dependencies as curated in the **package.json** file 
 ##### Software requirements
     Things you should have installed on your computer for this program to run as expected:
     * Node.js >= V14.0.0
