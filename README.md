@@ -7,11 +7,11 @@
 
 ### Getting Started 
 
-    This app was built as part of the requirements of the software interview process at ***Jodel Venture GmbH***.
+   - This app was built as part of the requirements of the software interview process at ***Jodel Venture GmbH***.
     It functions as a basic API that allows users to create a survey, take a survey and retrieve the results of a survey. It was built with a framework
     of NodeJS which is NestJS and the method of persistence used is a local MongoDB database.
 
-    Following below are some instructions on how to set up the app so that you could run it locally on your machine.
+   - Following below are some instructions on how to set up the app so that you could run it locally on your machine.
 
 ### Setting Up The Environment
 
@@ -21,24 +21,25 @@
      ```
      MONGO_URI='mongodb://localhost:27017/jodel-task'
      ```
-   - Afterwards, navigate to the project's root path and run a simple **npm install** in your terminal to install all the packages and dependencies as curated in the **package.json** file 
+   - Afterwards, navigate to the project's root path and run a simple ***npm install*** in your terminal to install all the packages and dependencies as curated in the **package.json** file 
 ##### Software requirements
-    Things you should have installed on your computer for this program to run as expected:
+
+   - Things you should have installed on your computer for this program to run as expected:
+    
     * Node.js >= V14.0.0
     * MongoDB >= V5.0
 
 
 ### Running the Application
-   - Having done all the installation and setup above, it's time to run the application and start up the server
+   - Having done all the installation and setup above, it's time to run the application and start up the server.
      To run the app, use the following command:
 
     ```
     npm run start:dev
 
     ```
-   - The above command bootstaps the application into development mode. Now you can play around with the software
     
-  - The above command bootstaps the application into development mode. Now you can play around with the software
+  - The above command bootstaps the application into development mode. Now you can play around with the software.
     Within the project, I have integrated a REST Web API Client to make manual testing easier for everyone, you simply
     have to install the VSCode REST API Client Extension from the marketplace.
 
