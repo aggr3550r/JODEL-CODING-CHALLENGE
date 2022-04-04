@@ -7,11 +7,11 @@
 
 ### Getting Started 
 
-    This app was built as part of the requirements of the software interview process at ***Jodel Venture GmbH***.
+   - This app was built as part of the requirements of the software interview process at ***Jodel Venture GmbH***.
     It functions as a basic API that allows users to create a survey, take a survey and retrieve the results of a survey. It was built with a framework
     of NodeJS which is NestJS and the method of persistence used is a local MongoDB database.
 
-    Following below are some instructions on how to set up the app so that you could run it locally on your machine.
+   - Following below are some instructions on how to set up the app so that you could run it locally on your machine.
 
 ### Setting Up The Environment
 
