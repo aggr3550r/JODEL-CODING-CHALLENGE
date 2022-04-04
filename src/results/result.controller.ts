@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Query, UseGuards } from "@nestjs/common";
 import { ResultService } from "./result.service";
 import { Serialize } from "../interceptors/serialize.interceptor";
 import { AuthGuard } from "../guards/auth.guard";
@@ -16,9 +16,9 @@ export class ResultController {
         return this.resultService.takeSurvey(body.survey_id, body.answer_id);
     }
 
-    @Get('/:id')
-    getResultsOfASurvey(@Param('id') id: string) {
-        return this.resultService.getResultsOfASurvey(id);
+    @Get()
+    getResultsOfASurvey(@Query('survey_id') survey_id: string) {
+        return this.resultService.getResultsOfASurvey(survey_id);
     }
 
 }
