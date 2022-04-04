@@ -38,9 +38,8 @@
     npm run start:dev
 
     ```
-   - The above command bootstaps the application into development mode. Now you can play around with the software
     
-  - The above command bootstaps the application into development mode. Now you can play around with the software
+  - The above command bootstaps the application into development mode. Now you can play around with the software.
     Within the project, I have integrated a REST Web API Client to make manual testing easier for everyone, you simply
     have to install the VSCode REST API Client Extension from the marketplace.
 
