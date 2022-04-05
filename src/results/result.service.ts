@@ -40,16 +40,14 @@ export class ResultService {
   async takeSurvey(survey_id: string, answer_id: number): Promise<CreateResultDTO> {
     const answer = await this.ResultModel.find({}).select('survey_id');
 
-    /*Create an array of all the survey_ids in the document*/
-    const survey_ids = [];
-    answer.forEach((e) => {
-      survey_ids.push(e.survey_id);
-    });
+    /*check if the survey_id passed already exists as a valid survey_id in the results collection*/
+    const valid_survey_id = answer.find((x) => x.survey_id === survey_id);
 
-    /*If the provided survey_id does not yet exist in the collection*/
-    if (!survey_ids.includes(survey_id)) {
+    console.log(valid_survey_id);
+    
+    if(!valid_survey_id) {
       /*create a new document in the collection with the new survey_id*/
-      await this.ResultModel.create({ survey_id, answer_id });
+     await this.ResultModel.create({ survey_id, answer_id });
 
       /*find the new document and update its answer_ids array*/
       return await this.ResultModel.findOneAndUpdate(
