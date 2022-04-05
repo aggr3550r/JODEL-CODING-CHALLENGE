@@ -29,7 +29,7 @@ describe('ResultController', () => {
   describe('takeSurvey', () => {
     describe('when takeSurvey is called', () => {
       let createResultDto: CreateResultDTO;
-      let result: Result;
+      let result: CreateResultDTO;
 
       beforeEach(async () => {
         createResultDto = {

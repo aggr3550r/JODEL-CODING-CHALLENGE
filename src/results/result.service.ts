@@ -42,14 +42,12 @@ export class ResultService {
 
     /*check if the survey_id passed already exists as a valid survey_id in the results collection*/
     const valid_survey_id = answer.find((x) => x.survey_id === survey_id);
-
-    console.log(valid_survey_id);
     
     if(!valid_survey_id) {
       /*create a new document in the collection with the new survey_id*/
      await this.ResultModel.create({ survey_id, answer_id });
 
-      /*find the new document and update its answer_ids array*/
+      /*find the document that was just created  and update its answer_ids array*/
       return await this.ResultModel.findOneAndUpdate(
         { survey_id: survey_id },
         { $push: { answer_ids: answer_id }, $set: { answer_id: answer_id } },
@@ -88,15 +86,15 @@ export class ResultService {
        }
 
         /*
-        Create an array of the question object in the results collection that matches the survey_id passed
+        Create a question object in the results collection that matches the survey_id passed
         */
-        const question_array = [surveys.find(x => x.id === requested_result.survey_id)];
+        const question_object = surveys.find(x => x.id === requested_result.survey_id);
 
-        const { question } = question_array[0];
+        const { question } = question_object;
 
         //array containing all the valid ids in the options array
         const valid_ids = [];
-        question_array[0].options.forEach((obj) => {
+        question_object.options.forEach((obj) => {
             valid_ids.push(obj.id);
         })
 
@@ -113,7 +111,7 @@ export class ResultService {
         //array containing answers that users have provided
         const answers_so_far = [];
         answer_ids.forEach((answer_id) => {
-            answers_so_far.push(question_array[0].options.find(x => x.id === answer_id).option)
+            answers_so_far.push(question_object.options.find(x => x.id === answer_id).option)
         })
 
       return {question, answers_so_far};
