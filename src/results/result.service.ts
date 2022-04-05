@@ -42,8 +42,6 @@ export class ResultService {
 
     /*check if the survey_id passed already exists as a valid survey_id in the results collection*/
     const valid_survey_id = answer.find((x) => x.survey_id === survey_id);
-
-    console.log(valid_survey_id);
     
     if(!valid_survey_id) {
       /*create a new document in the collection with the new survey_id*/
