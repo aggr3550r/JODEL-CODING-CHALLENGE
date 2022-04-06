@@ -24,7 +24,7 @@ describe('SurveyController', () => {
   });
 
   describe('createSurvey', () => {
-    describe('when createSurvey is called', () => {
+    describe('* when createSurvey is called', () => {
       let createSurveyDto: CreateSurveyDTO;
       let survey: Survey;
 

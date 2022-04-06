@@ -1,9 +1,6 @@
-import { Expose, Transform } from "class-transformer";
-import mongoose from "mongoose";
+import { Expose } from "class-transformer";
 
 export class SurveyDTO {
-    // @Expose()
-    // id: string;
     @Expose()
     question: string;
     @Expose()

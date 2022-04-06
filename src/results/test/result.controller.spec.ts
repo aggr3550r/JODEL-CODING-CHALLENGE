@@ -27,7 +27,7 @@ describe('ResultController', () => {
   });
 
   describe('takeSurvey', () => {
-    describe('when takeSurvey is called', () => {
+    describe('* when takeSurvey is called', () => {
       let createResultDto: CreateResultDTO;
       let result: CreateResultDTO;
 
@@ -47,14 +47,14 @@ describe('ResultController', () => {
         );
       });
 
-      test('then it should return a response/result', () => {
+      test('then it should return a response/result data regarding the submitted survey', () => {
         expect(result).toEqual(takeSurveyStub());
       });
     });
   });
 
   describe('getResultsOfASurvey', () => {
-    describe('when getResultsOfASurvey is called', () => {
+    describe('* when getResultsOfASurvey is called', () => {
       let result: ShowResultDTO;
       let getResultDto: GetResultDTO;
 
@@ -74,7 +74,7 @@ describe('ResultController', () => {
         );
       });
 
-      test('then it should return the results of a survey', () => {
+      test('then it should return the results of a given survey', () => {
         expect(result).toEqual(showResultStub());
       });
     });
