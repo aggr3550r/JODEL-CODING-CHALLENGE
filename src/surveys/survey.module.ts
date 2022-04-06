@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SurveyService } from './survey.service';
 import { SurveyController } from './survey.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Survey, SurveySchema } from './schemas/survey.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Result, ResultSchema } from '../results/schemas/result.schema';

@@ -3,7 +3,7 @@ import { ResultService } from "./result.service";
 import { Serialize } from "../interceptors/serialize.interceptor";
 import { AuthGuard } from "../guards/auth.guard";
 import { CreateResultDTO } from "./dtos/create-result.dto";
-import { ResultDTO } from "./dtos/result.dto";
+
 
 @Controller('results')
 @UseGuards(AuthGuard)
@@ -11,7 +11,7 @@ export class ResultController {
     constructor(private resultService: ResultService) {}
 
     @Post()
-    @Serialize(ResultDTO)
+    @Serialize(CreateResultDTO)
     takeSurvey(@Body() body: CreateResultDTO) {
         return this.resultService.takeSurvey(body.survey_id, body.answer_id);
     }
