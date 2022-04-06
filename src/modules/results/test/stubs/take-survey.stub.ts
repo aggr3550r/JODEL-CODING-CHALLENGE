@@ -1,4 +1,4 @@
-import { CreateResultDTO } from "src/results/dtos/create-result.dto"
+import { CreateResultDTO } from "src/modules/results/dtos/create-result.dto"
 
 
 export const takeSurveyStub = (): CreateResultDTO => {

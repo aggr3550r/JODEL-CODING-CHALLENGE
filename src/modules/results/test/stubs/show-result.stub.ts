@@ -1,4 +1,4 @@
-import { ShowResultDTO } from "src/results/dtos/show-result.dto";
+import { ShowResultDTO } from "src/modules/results/dtos/show-result.dto";
 
 
 export const showResultStub = (): ShowResultDTO => {

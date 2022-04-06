@@ -1,4 +1,4 @@
-import { Survey } from "src/surveys/schemas/survey.schema";
+import { Survey } from "src/modules/surveys/schemas/survey.schema";
 
 export const surveyStub = (): Survey => {
     return {

@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query, UseGuards } from "@nestjs/common";
 import { ResultService } from "./result.service";
-import { Serialize } from "../interceptors/serialize.interceptor";
-import { AuthGuard } from "../guards/auth.guard";
+import { Serialize } from "../../interceptors/serialize.interceptor";
+import { AuthGuard } from "../../guards/auth.guard";
 import { CreateResultDTO } from "./dtos/create-result.dto";
 
 

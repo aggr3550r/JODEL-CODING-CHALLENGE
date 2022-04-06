@@ -1,11 +1,11 @@
 import { Controller, Post, Body, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { SurveyService } from './survey.service';
-import { Serialize } from '../interceptors/serialize.interceptor';
+import { Serialize } from '../../interceptors/serialize.interceptor';
 import { CreateSurveyDTO } from './dtos/create-survey.dto';
 import { SurveyDTO } from './dtos/survey.dto';
 import mongoose from 'mongoose';
 import { GetSurveyDTO } from './dtos/get-survey.dto';
-import { AuthGuard } from '../guards/auth.guard';
+import { AuthGuard } from '../../guards/auth.guard';
 const ObjectId = require('mongodb').ObjectID;
 
 @Controller('surveys')
