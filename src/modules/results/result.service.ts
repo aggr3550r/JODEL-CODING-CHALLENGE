@@ -6,6 +6,7 @@ import { ResultDocument } from './schemas/result.schema';
 import { Survey, SurveyDocument } from '../surveys/schemas/survey.schema';
 import { ShowResultDTO } from './dtos/show-result.dto';
 import { CreateResultDTO } from './dtos/create-result.dto';
+import { ObjectID } from 'src/types/object-id.type';
 
 
 @Injectable()
@@ -23,11 +24,11 @@ export class ResultService {
     return await answer.save();
   }
 
-  async find(id: string) {
+  async find(id: ObjectID) {
     return await this.ResultModel.find({ id });
   }
 
-  async findOne(id: string) {
+  async findOne(id: ObjectID) {
     if (!id) {
       return null;
     }

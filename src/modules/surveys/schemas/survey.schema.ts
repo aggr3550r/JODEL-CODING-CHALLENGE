@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { Options } from '../types/options.type'
+import { Options } from '../../../types/options.type'
 
 export type SurveyDocument = Survey & Document;
 

@@ -1,25 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import * as mongoose from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Survey } from './schemas/survey.schema';
 import { SurveyDocument } from './schemas/survey.schema';
 import { CreateSurveyDTO } from './dtos/create-survey.dto';
+import { ObjectID } from 'src/types/object-id.type';
+import { Options } from 'src/types/options.type';
 
 @Injectable()
 export class SurveyService {
     constructor(@InjectModel(Survey.name) private SurveyModel: Model<SurveyDocument>) {}
 
-    async createSurvey(question: string, options: {}[]): Promise<CreateSurveyDTO> {
+    async createSurvey(question: string, options: Options[]): Promise<CreateSurveyDTO> {
         const survey =  await this.SurveyModel.create({question, options});
         return survey.save();
     }
 
-    async find(id: mongoose.Types.ObjectId) {
+    async find(id: ObjectID) {
         return await this.SurveyModel.find({id});
     }
 
-    async findOne(id: mongoose.Types.ObjectId) {
+    async findOne(id: ObjectID) {
         if(!id){
             return null;
         }

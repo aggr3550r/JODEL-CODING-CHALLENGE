@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, Query, UseGuards } from "@nestjs/common";
 import { ResultService } from "./result.service";
 import { Serialize } from "../../interceptors/serialize.interceptor";
 import { AuthGuard } from "../../guards/auth.guard";

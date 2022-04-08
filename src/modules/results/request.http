@@ -4,7 +4,7 @@ content-type: application/json
  
 {
     "survey_id": "6245f88cd8148670691f8e5b",
-    "answer_id": 3
+    "answer_id": 1
 }
 
 ### Get results of a survey

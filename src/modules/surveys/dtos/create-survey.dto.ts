@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
-import { Options } from "../types/options.type";
+import { Options } from "../../../types/options.type";
 
 
 export class CreateSurveyDTO {
