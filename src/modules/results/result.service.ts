@@ -24,17 +24,6 @@ export class ResultService {
     return await answer.save();
   }
 
-  async find(id: ObjectID) {
-    return await this.ResultModel.find({ id });
-  }
-
-  async findOne(id: ObjectID) {
-    if (!id) {
-      return null;
-    }
-    return await this.ResultModel.findById(id).exec();
-  }
-
   /* Main routine:
     Collects user response and submits it to the result collection
     */

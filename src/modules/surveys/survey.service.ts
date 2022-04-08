@@ -16,10 +16,6 @@ export class SurveyService {
         return survey.save();
     }
 
-    async find(id: ObjectID) {
-        return await this.SurveyModel.find({id});
-    }
-
     async findOne(id: ObjectID) {
         if(!id){
             return null;
