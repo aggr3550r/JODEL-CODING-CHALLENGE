@@ -10,13 +10,9 @@ import { ObjectID } from 'src/types/object-id.type';
 export class SurveyService {
     constructor(@InjectModel(Survey.name) private SurveyModel: Model<SurveyDocument>) {}
 
-    async createSurvey(question: string, options: {}[]): Promise<CreateSurveyDTO> {
+    async createSurvey(question: string, options: Options[]): Promise<CreateSurveyDTO> {
         const survey =  await this.SurveyModel.create({question, options});
         return survey.save();
-    }
-
-    async find(id: ObjectID) {
-        return await this.SurveyModel.find({id});
     }
 
     async findOne(id: ObjectID) {
