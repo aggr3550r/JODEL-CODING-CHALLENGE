@@ -13,7 +13,7 @@ export class ResultController {
     @Post()
     @Serialize(CreateResultDTO)
     takeSurvey(@Body() body: CreateResultDTO) {
-        return this.resultService.takeSurvey(body.survey_id, body.answer_id);
+        return this.resultService.addAResultByTakingASurvey(body.survey_id, body.answer_id);
     }
 
     @Get()

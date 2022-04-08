@@ -27,7 +27,7 @@ export class ResultService {
   /* Main routine:
     Collects user response and submits it to the result collection
     */
-  async takeSurvey(survey_id: string, answer_id: number): Promise<CreateResultDTO> {
+  async addAResultByTakingASurvey(survey_id: string, answer_id: number): Promise<CreateResultDTO> {
     const answer = await this.ResultModel.find({}).select('survey_id');
 
     /*check if the survey_id passed already exists as a valid survey_id in the results collection*/
