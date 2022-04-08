@@ -82,7 +82,7 @@ export class ResultService {
         simply throw an exception and notify the user that the survey_id they passed is invalid
         */
         if(!requested_result) {
-         throw new NotFoundException(`No existing question has an id of ${survey_id} !`);
+         throw new NotFoundException(`No one has answered a survey with id of ${survey_id}!`);
        }
 
         /*
