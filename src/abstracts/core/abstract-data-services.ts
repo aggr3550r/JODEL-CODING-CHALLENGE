@@ -1,0 +1,1 @@
+import { Result } from "src/modules/results/schemas/result.schema";
