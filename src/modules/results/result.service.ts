@@ -82,14 +82,16 @@ export class ResultService {
         simply throw an exception and notify the user that the survey_id they passed is invalid
         */
         if(!requested_result) {
-         throw new NotFoundException(`No one has answered a survey with id of ${survey_id}!`);
+         throw new NotFoundException(`Either no one has answered a survey with id of ${survey_id} or it doesn't exist in the first place.`);
        }
 
+       console.log(requested_result);
         /*
-        Create a question object in the results collection that matches the survey_id passed
+        Retrieve the question object in the results collection that matches the survey_id passed
         */
         const question_object = surveys.find(x => x.id === requested_result.survey_id);
 
+        
         const { question } = question_object;
 
         //array containing all the valid ids in the options array
