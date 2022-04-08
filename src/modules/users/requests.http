@@ -15,6 +15,7 @@ content-type: application/json
 
 {
     "email": "victor@kippa.africa",
+    "username": "Victor Uche",
     "password": "Victor"
 }
 
