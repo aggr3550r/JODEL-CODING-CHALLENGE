@@ -1,11 +1,11 @@
 import {IsNotEmpty} from "class-validator";
 import { Expose } from "class-transformer";
-import mongoose from "mongoose";
+import { ObjectID } from "src/types/object-id.type";
 
 export class GetSurveyDTO {
     @Expose()
     @IsNotEmpty()
-    id: mongoose.Types.ObjectId;
+    id: ObjectID;
 
     @Expose()
     @IsNotEmpty()
