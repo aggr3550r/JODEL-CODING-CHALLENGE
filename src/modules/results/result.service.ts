@@ -17,7 +17,7 @@ export class ResultService {
   ) {}
 
   /* Helper routine:
-    Helps takeSurvey() do its job by asynchronously creating some data in the mongoose document
+    Helps  addAResultByTakingASurvey() do its job by asynchronously creating some data in the mongoose document
     */
   async create(survey_id: string, answer_id: number) {
     const answer = await this.ResultModel.create({ survey_id, answer_id });
