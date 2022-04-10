@@ -5,6 +5,7 @@ import { Survey } from './schemas/survey.schema';
 import { SurveyDocument } from './schemas/survey.schema';
 import { CreateSurveyDTO } from './dtos/create-survey.dto';
 import { ObjectID } from 'src/types/object-id.type';
+import { Options } from 'src/types/options.type';
 
 @Injectable()
 export class SurveyService {
