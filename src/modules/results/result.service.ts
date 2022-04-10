@@ -75,7 +75,6 @@ export class ResultService {
          throw new NotFoundException(`Either no one has answered a survey with id of ${survey_id} or it doesn't exist in the first place.`);
        }
 
-       console.log(requested_result);
         /*
         Retrieve the question object in the results collection that matches the survey_id passed
         */
@@ -108,4 +107,8 @@ export class ResultService {
 
       return {question, answers_so_far};
 }
+}
+
+function newGetResultsOfASurvey(survey_id: ObjectID) {
+  
 }
