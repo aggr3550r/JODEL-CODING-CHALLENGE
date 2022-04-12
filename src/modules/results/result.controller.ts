@@ -3,6 +3,7 @@ import { ResultService } from "./result.service";
 import { Serialize } from "../../interceptors/serialize.interceptor";
 import { AuthGuard } from "../../guards/auth.guard";
 import { CreateResultDTO } from "./dtos/create-result.dto";
+import { ObjectID } from "src/types/object-id.type";
 
 
 @Controller('results')
@@ -19,6 +20,11 @@ export class ResultController {
     @Get()
     getResultsOfASurvey(@Query('survey_id') survey_id: string) {
         return this.resultService.getResultsOfASurvey(survey_id);
+    }
+
+    @Get('new-function') 
+    newGetResultsOfASurvey(@Query('survey_id') survey_id: ObjectID) {
+        return this.resultService.newGetResultsOfASurvey(survey_id);
     }
 
 }

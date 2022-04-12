@@ -53,6 +53,7 @@ export class ResultService {
     }
   }
 
+
   /* Main routine:
    Gets the results of a survey with a passed id
     */
@@ -80,6 +81,8 @@ export class ResultService {
         */
         const question_object = surveys.find(x => x.id === requested_result.survey_id);
 
+        console.log(question_object);
+
         
         const { question } = question_object;
 
@@ -89,26 +92,96 @@ export class ResultService {
             valid_ids.push(obj.id);
         })
 
-        //array containing all the responses pertaining to a particular question
-        let answer_ids = requested_result.answer_ids;
+        const query = this.ResultModel.findOne({'survey_id': survey_id})
 
-        //sanitize the answer_ids based on the valid_ids
-        answer_ids.forEach((id) => {
-          if(!(valid_ids.includes(id))){
-            answer_ids = answer_ids.filter(x => x !== id)
-          }
-        })
+        query.exec((err, result) => {
+          if (err) console.log(err);
 
-        //array containing answers that users have provided
-        const answers_so_far = [];
+         let answer_ids = [];
+ 
+         result.answer_ids.forEach((answer_id) => {
+             if((!valid_ids.includes(answer_id))) {
+                 answer_ids = answer_ids.filter(x => x !== answer_id);
+             }
+         })
+
+         const answers_so_far = [];
         answer_ids.forEach((answer_id) => {
             answers_so_far.push(question_object.options.find(x => x.id === answer_id).option)
         })
 
+        
       return {question, answers_so_far};
-}
+
+        });
+
+        //array containing answers that users have provided
+
+        return 
 }
 
-function newGetResultsOfASurvey(survey_id: ObjectID) {
-  
+    async getAnswerIDsOfASurvey(survey_id: ObjectID): Promise<number[]> {
+
+      const results = await this.ResultModel.find({}, {survey_id: survey_id, answer_ids: 1, _id:0});
+
+      return results[0].answer_ids;
+
 }
+    async newGetResultsOfASurvey(survey_id: ObjectID) {
+      /* 1.
+      find the element in the results collection that matches the survey_id passed above
+      */
+      const results = await this.ResultModel.find({}, {survey_id: survey_id, answer_ids: 1, _id:0});
+     
+      let answer_ids = results[0].answer_ids;
+      const valid_answer_ids = [];
+      const frequency_counter = {};
+
+      /* 2.
+      check the surveys collection, find all the valid_ids in the options array of the survey that matches the above survey_id 
+      */
+     const survey = await this.SurveyModel.findById(survey_id).exec();
+     survey.options.forEach((obj) => {
+        valid_answer_ids.push(obj.id);
+     })
+
+      /* 3.
+        find all the answer_ids in the result that matches the survey_id and then filter the array based on the valid_ids
+      */
+      answer_ids.forEach((answer_id) => {
+        if(!valid_answer_ids.includes(answer_id)) {
+            answer_ids = answer_ids.filter(x => x !== answer_id)
+          }
+       })
+
+        /* 4.
+        take the filtered array and then use a frequency_counter to keep track of how many times
+        every value occurs; frequency_counter will be a hash map
+      */
+      for(let i = 0; i < answer_ids.length; i++) {
+          if(frequency_counter[answer_ids[i]]) {
+            frequency_counter[answer_ids[i]] += 1;
+          }
+          else {
+            frequency_counter[answer_ids[i]] = 1;
+          }
+      }
+
+      console.log(frequency_counter['1']);
+        /* 5.
+        take each key in frequency_counter and replace it with a corresponding option in the options array 
+      */
+
+        /* 5.1
+        for each key in frequency_counter, find the id in the survey options array that matches it and replace this key with the value of the matching id 
+        */
+
+        /* 6.
+        return frequency_counter
+      */
+
+    }
+
+}
+
+

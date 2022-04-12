@@ -4,8 +4,12 @@ content-type: application/json
  
 {
     "survey_id": "62502451ca5ca2435d97539a",
-    "answer_id": 2
+    "answer_id": 1
 }
 
 ### Get results of a survey
 GET http://localhost:8000/results?survey_id=62502451ca5ca2435d97539a
+
+
+### Get answer_ids of a survey
+GET http://localhost:8000/results/new-function?survey_id=62502451ca5ca2435d97539a
