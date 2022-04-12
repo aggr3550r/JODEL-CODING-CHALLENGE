@@ -12,7 +12,7 @@ export function Serialize(dto: ClassConstructor) {
     return UseInterceptors(new SerializeInterceptor(dto));
 }
 
-/*The class that the app uses to intercept response objects across all routes by removing extraneous values*/
+/*The class that the app uses to intercept response objects across all routes in order to remove extraneous values*/
 
 export class SerializeInterceptor implements NestInterceptor{
     constructor(private dto: any){}

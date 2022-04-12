@@ -13,7 +13,7 @@ export class ResultController {
 
     @Post()
     @Serialize(CreateResultDTO)
-    takeSurvey(@Body() body: CreateResultDTO) {
+    addAResultByTakingASurvey(@Body() body: CreateResultDTO) {
         return this.resultService.addAResultByTakingASurvey(body.survey_id, body.answer_id);
     }
 
@@ -22,9 +22,13 @@ export class ResultController {
         return this.resultService.getResultsOfASurvey(survey_id);
     }
 
+<<<<<<< HEAD
     @Get('new-function') 
     newGetResultsOfASurvey(@Query('survey_id') survey_id: ObjectID) {
         return this.resultService.newGetResultsOfASurvey(survey_id);
     }
 
 }
+=======
+}
+>>>>>>> ee30699a1cd3b3a9214850cd630d59fd36cafc02
