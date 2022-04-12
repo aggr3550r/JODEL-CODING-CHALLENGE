@@ -167,18 +167,7 @@ export class ResultService {
           }
       }
 
-      console.log(frequency_counter['1']);
-        /* 5.
-        take each key in frequency_counter and replace it with a corresponding option in the options array 
-      */
-
-        /* 5.1
-        for each key in frequency_counter, find the id in the survey options array that matches it and replace this key with the value of the matching id 
-        */
-
-        /* 6.
-        return frequency_counter
-      */
+      return frequency_counter;
 
     }
 
