@@ -167,6 +167,10 @@ export class ResultService {
           }
       }
 
+      for(let key in frequency_counter) {
+        console.log(key);
+      }
+
       return frequency_counter;
 
     }
