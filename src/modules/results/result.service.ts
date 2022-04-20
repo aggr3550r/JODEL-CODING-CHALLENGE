@@ -54,80 +54,10 @@ export class ResultService {
   }
 
 
-  /* Main routine:
-   Gets the results of a survey with a passed id
-    */
-   async getResultsOfASurvey(survey_id: string): Promise<ShowResultDTO> {
-        const surveys = await this.SurveyModel.find().select({
-            __v: 0
-        });
-        const results = await this.ResultModel.find().select({survey_id: 1, answer_ids:1, _id: 0})
-
-        /*
-        Find a question in the surveys collection that matches the survey_id passed as an argument
-        */
-        const requested_result = results.find(x => x.survey_id === survey_id );
-
-        
-        /* If the survey_id given by the user does not match any question in the surveys collection,
-        simply throw an exception and notify the user that the survey_id they passed is invalid
-        */
-        if(!requested_result) {
-         throw new NotFoundException(`Either no one has answered a survey with id of ${survey_id} or it doesn't exist in the first place.`);
-       }
-
-        /*
-        Retrieve the question object in the results collection that matches the survey_id passed
-        */
-        const question_object = surveys.find(x => x.id === requested_result.survey_id);
-
-        console.log(question_object);
-
-        
-        const { question } = question_object;
-
-        //array containing all the valid ids in the options array
-        const valid_ids = [];
-        question_object.options.forEach((obj) => {
-            valid_ids.push(obj.id);
-        })
-
-        const query = this.ResultModel.findOne({'survey_id': survey_id})
-
-        query.exec((err, result) => {
-          if (err) console.log(err);
-
-         let answer_ids = [];
- 
-         result.answer_ids.forEach((answer_id) => {
-             if((!valid_ids.includes(answer_id))) {
-                 answer_ids = answer_ids.filter(x => x !== answer_id);
-             }
-         })
-
-         const answers_so_far = [];
-        answer_ids.forEach((answer_id) => {
-            answers_so_far.push(question_object.options.find(x => x.id === answer_id).option)
-        })
-
-        
-      return {question, answers_so_far};
-
-        });
-
-        //array containing answers that users have provided
-
-        return 
-}
-
-    async getAnswerIDsOfASurvey(survey_id: ObjectID): Promise<number[]> {
-
-      const results = await this.ResultModel.find({}, {survey_id: survey_id, answer_ids: 1, _id:0});
-
-      return results[0].answer_ids;
-
-}
-    async newGetResultsOfASurvey(survey_id: ObjectID) {
+    /* Main routine:
+    Gets the results of a survey with a passed id
+      */
+    async getResultsOfASurvey(survey_id: ObjectID) {
       /* 1.
       find the element in the results collection that matches the survey_id passed above
       */
@@ -140,10 +70,10 @@ export class ResultService {
       /* 2.
       check the surveys collection, find all the valid_ids in the options array of the survey that matches the above survey_id 
       */
-     const survey = await this.SurveyModel.findById(survey_id).exec();
-     survey.options.forEach((obj) => {
-        valid_answer_ids.push(obj.id);
-     })
+      const survey = await this.SurveyModel.findById(survey_id).exec();
+      survey.options.forEach((obj) => {
+          valid_answer_ids.push(obj.id);
+      })
 
       /* 3.
         find all the answer_ids in the result that matches the survey_id and then filter the array based on the valid_ids
@@ -166,12 +96,16 @@ export class ResultService {
             frequency_counter[answer_ids[i]] = 1;
           }
       }
-
+      
       for(let key in frequency_counter) {
-        console.log(key);
+        //find the object in the options array with an id that corresponds to the key
+        let obj = survey.options.find(x => x.id === parseInt(key))
+        //take the option property of that object
+        //replace the key in frequency counter with this option
+        frequency_counter[obj.option] = frequency_counter[key];
+        delete frequency_counter[key];
       }
-
-      return frequency_counter;
+      return [survey.question , frequency_counter];
 
     }
 

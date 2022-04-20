@@ -6,10 +6,6 @@ import { SurveyDocument } from './schemas/survey.schema';
 import { CreateSurveyDTO } from './dtos/create-survey.dto';
 import { ObjectID } from 'src/types/object-id.type';
 import { Options } from 'src/types/options.type';
-<<<<<<< HEAD
-=======
-
->>>>>>> ee30699a1cd3b3a9214850cd630d59fd36cafc02
 @Injectable()
 export class SurveyService {
     constructor(@InjectModel(Survey.name) private SurveyModel: Model<SurveyDocument>) {}
