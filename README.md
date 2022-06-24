@@ -1,4 +1,4 @@
-## Content
+# Content
 #### - Getting Started
 #### - Setting Up The Environment
 #### - Running The Application
