@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ResultService } from '../result.service';
 import { ResultController } from '../result.controller';
 import { CreateResultDTO } from '../dtos/create-result.dto';
-import { Result } from '../schemas/result.schema';
 import { takeSurveyStub } from './stubs/take-survey.stub';
 import { ShowResultDTO } from '../dtos/show-result.dto';
 import { showResultStub } from './stubs/show-result.stub';
@@ -37,11 +36,13 @@ describe('ResultController', () => {
           answer_id: takeSurveyStub().answer_id,
         };
 
-        result = await resultController.takeSurvey(createResultDto);
+        result = await resultController.addAResultByTakingASurvey(
+          createResultDto,
+        );
       });
 
       test('then it should call resultService', () => {
-        expect(resultService.takeSurvey).toHaveBeenCalledWith(
+        expect(resultService.addAResultByTakingASurvey).toHaveBeenCalledWith(
           createResultDto.survey_id,
           createResultDto.answer_id,
         );

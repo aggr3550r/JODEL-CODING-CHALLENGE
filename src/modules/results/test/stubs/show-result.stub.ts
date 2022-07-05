@@ -1,9 +1,10 @@
-import { ShowResultDTO } from "src/modules/results/dtos/show-result.dto";
-
+import { ShowResultDTO } from 'src/modules/results/dtos/show-result.dto';
 
 export const showResultStub = (): ShowResultDTO => {
-    return {
-        question: "What is your favourite colour",
-        answers_so_far: ["Blue", "Red"]
-    }
-}
+  let question = 'What is your favourite color';
+  let frequency_counter = {};
+  return {
+    question,
+    frequency_counter,
+  };
+};
