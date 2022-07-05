@@ -6,7 +6,6 @@ import { ResultDocument } from './schemas/result.schema';
 import { Survey, SurveyDocument } from '../surveys/schemas/survey.schema';
 import { ShowResultDTO } from './dtos/show-result.dto';
 import { CreateResultDTO } from './dtos/create-result.dto';
-import { ObjectID } from 'src/types/object-id.type';
 
 @Injectable()
 export class ResultService {
@@ -27,17 +26,13 @@ export class ResultService {
     Collects user response and submits it to the result collection
     */
   async addAResultByTakingASurvey(
-    survey_id: string,
-    answer_id: number,
+    body: CreateResultDTO,
   ): Promise<CreateResultDTO> {
+    const survey_id = body.survey_id,
+      answer_id = body.answer_id;
     const answer = await this.ResultModel.find({}).select('survey_id');
 
     const valid_survey_id = answer.find((x) => x.survey_id === survey_id);
-
-    const body: CreateResultDTO = {
-      answer_id: answer_id,
-      survey_id: survey_id,
-    };
 
     if (!valid_survey_id) {
       await this.ResultModel.create(body);

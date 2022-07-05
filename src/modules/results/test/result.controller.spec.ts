@@ -43,8 +43,7 @@ describe('ResultController', () => {
 
       test('then it should call resultService', () => {
         expect(resultService.addAResultByTakingASurvey).toHaveBeenCalledWith(
-          createResultDto.survey_id,
-          createResultDto.answer_id,
+          createResultDto,
         );
       });
 
